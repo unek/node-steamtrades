@@ -34,11 +34,11 @@ SteamTrades.prototype._call = function (options, callback) {
       switch (response.statusCode) {
         case 400: err.message = 'Bad request'; break;
         case 403: err.message = 'Access denied'; break;
-        case 404: err.message = 'Items unavailable'; err.items = body.missing_items; break;
-        case 432: err.message = 'Items locked'; err.items = body.locked; break;
+        case 404: err.message = 'Some of the selected items are missing'; err.items = body.missing_items; break;
+        case 423: err.message = 'Some of the selected items are missing'; err.items = body.locked_items; break;
 
       }
-      // todo proper handling for errors 404, 423, 400, 418
+      
       // api error :(
       return callback(err);
     }
