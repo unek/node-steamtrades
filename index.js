@@ -19,7 +19,8 @@ SteamTrades.prototype._call = function (options, callback) {
       'User-Agent': 'node-steamtrades',
       'Authorization': 'Token ' + this.access_token
     },
-    qs: options.params
+    qs: options.params,
+    forever: true
   }, function (err, response, body) {
     // error making request (no connection, etc.)
     if (err) {
